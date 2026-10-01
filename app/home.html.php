@@ -1,23 +1,31 @@
 <?php require __DIR__ . '/before.html.php'; ?>
 
 <?php
-$article_list = generate_list(
-  path: '/article',
+$articles = generate_page_list(
+  route: '/article',
   count: 5,
+  // page: $page['param:page'],
+  // perPage: 10,
 );
+// $pagination = generate_pagination(
+//     currentPage: $articles['current_page'],
+//     lastPage: $articles['last_page'],
+//     baseUrl: '',
+//     extraParams: [],
+// );
 ?>
 
 <h1><?= e($page['title']) ?></h1>
 
 <hr>
 
-<?php if (!empty($article_list)): ?>
-  <h2><?= e($article_list['title']) ?></h2>
+<?php if (!empty($articles)): ?>
+  <h2><?= e($articles['title']) ?></h2>
   <ul class="d-flex flex-column gap-2">
-    <?php foreach ($article_list['list'] as $article): ?>
+    <?php foreach ($articles['list'] as $article): ?>
       <li>
         <div class="d-flex flex-column">
-          <a href="<?= url($article['url']) ?>">
+          <a href="<?= url($article['route']) ?>">
             <?= e($article['title']) ?>
           </a>
           <span><?= format_date($article['date'], 'd M Y') ?></span>
@@ -25,7 +33,7 @@ $article_list = generate_list(
       </li>
     <?php endforeach ?>
     <li>
-      <a href="<?= url($article_list['url']) ?>">View all</a>
+      <a href="<?= url($articles['route']) ?>">View all</a>
     </li>
   </ul>
 <?php endif ?>

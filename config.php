@@ -24,27 +24,45 @@ const ERROR_PAGE  = [
     'template' => __DIR__ . '/app/404.html.php',
 ];
 
-const STATIC_PAGES = [
+const PAGES = [
     [
         'title'    => 'About',
-        'url'      => '/about',
+        'route'    => '/about',
         'template' => __DIR__ . '/app/about/about.html.php',
-        'content'  => __DIR__ . '/app/about/about.md', // `content` is optional
+        // Single file markdown (optional)
+        'content'  => __DIR__ . '/app/about/about.md',
     ],
-];
-
-const DYNAMIC_PAGES = [
-    '/article' => [
+    [
+        'title'    => 'About Segment 1',
+        'route'    => '/about/[foo]',
+        'template' => __DIR__ . '/app/about/about-[foo].html.php',
+    ],
+    [
+        'title'    => 'About Segment 2',
+        'route'    => '/about/[foo]/[bar]',
+        'template' => __DIR__ . '/app/about/about-[foo]-[bar].html.php',
+    ],
+    [
+        // Example auto list/item routing and directory-based markdown
         'title'    => 'Article',
-        'content' => [ // `content` is optional
+        'route'    => '/article',
+        // `template` as { list, item } (instead of a single file) makes this
+        // one entry automatically cover two routes: `/article` (list) and
+        // `/article/[slug]` (item)
+        // the `[slug]` segment is appended by the router automatically.
+        'template' => [
+            'list' => __DIR__ . '/app/article/list.html.php',
+            'item' => __DIR__ . '/app/article/item.html.php',
+        ],
+        // `content.dir` reads markdown files from this directory for both
+        // routes above.
+        'content'  => [
             'dir'       => __DIR__ . '/app/article/content',
             'per_page'  => 5,
             'order_by'  => 'title',
             'order_dir' => 'asc',
-        ],
-        'view' => [
-            'list'   => __DIR__ . '/app/article/view/list.html.php',
-            'item'   => __DIR__ . '/app/article/view/item.html.php',
+            // Allowed filters
+            'filter'    => ['category', 'tags'],
         ],
     ],
 ];

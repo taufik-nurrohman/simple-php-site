@@ -1,16 +1,16 @@
-<?php require __DIR__ . '/../../before.html.php'; ?>
+<?php require __DIR__ . '/../before.html.php'; ?>
 
 <h1><?= e($page['title']) ?></h1>
 
 <p>
-  <a href="<?= url($page['list_url']) ?>"><?= e($page['list_title']) ?></a>
+  <a href="<?= url($page['route:list']) ?>"><?= e($page['title:list']) ?></a>
   <span><?= format_date($page['date'], 'd M Y') ?></span>
 </p>
 
 <p>
   Category:
   <?php if (!empty($page['category'])): ?>
-    <a class="badge text-bg-secondary" href="<?= url($page['list_url']) . '?category=' . urlencode($page['category']) ?>">
+    <a class="badge text-bg-secondary" href="<?= url($page['route:list']) . '?category=' . urlencode($page['category']) ?>">
       <?= e($page['category']) ?>
     </a>
   <?php endif ?>
@@ -21,7 +21,7 @@
   <?php if (!empty($page['tags'])): ?>
     <span class="d-inline-flex gap-1">
       <?php foreach ($page['tags'] as $tag): ?>
-        <a class="badge text-bg-secondary" href="<?= url($page['list_url']) . '?tag=' . urlencode($tag) ?>">
+        <a class="badge text-bg-secondary" href="<?= url($page['route:list']) . '?tags=' . urlencode($tag) ?>">
           <?= e($tag) ?>
         </a>
       <?php endforeach ?>
@@ -33,4 +33,4 @@
   <?= $page['content'] ?>
 </div>
 
-<?php require __DIR__ . '/../../after.html.php'; ?>
+<?php require __DIR__ . '/../after.html.php'; ?>

@@ -46,7 +46,7 @@ class TemplateRenderer {
             return (string) call_user_func_array($this->functions[$name], $args);
         }
 
-        // Plain variable: home_url
+        // Plain variable: site_url
         if (preg_match('/^[a-zA-Z_][a-zA-Z0-9_]*$/', $expr)) {
             return (string) ($this->vars[$expr] ?? '');
         }
@@ -88,7 +88,7 @@ function get_template_renderer(): TemplateRenderer {
         $renderer = new TemplateRenderer();
 
         $renderer->setVar('site_title', STATE['title'] ?? 'My Site');
-        $renderer->setVar('home_url', $home_url);
+        $renderer->setVar('site_url', $home_url);
         $renderer->setFunction('url', fn($path) => url($path));
         $renderer->setFunction('img', function ($path, $alt = '', $class = '') {
             $src = url($path);

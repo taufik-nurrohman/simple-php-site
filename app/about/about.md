@@ -1,5 +1,6 @@
 ---
-foo: Foo Bar Baz
+segment1: '/about/abcd'
+segment2: '/about/abcd/1234'
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae sem rhoncus, fermentum mauris nec, placerat velit. In eleifend est interdum, euismod purus vel, maximus felis. Praesent blandit neque egestas erat commodo feugiat. Sed facilisis finibus ligula, imperdiet fermentum est ultricies a. Sed at mattis tellus. Vivamus at turpis quis augue tincidunt hendrerit. Donec orci leo, sagittis quis lacinia eget, consequat in velit.

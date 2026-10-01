@@ -19,4 +19,4 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae sem rhoncus
 
 ![Unicorn]({{ url('/app/article/img/unicorn.jpeg') }})
 
-{{ home_url }}
+{{ site_url }}
